@@ -12,3 +12,4 @@ C:\Users\ANNIA GONZALEZ\source\repos\Proyecto22\Proyecto22\obj\Debug\Proyecto22.
 C:\Users\ANNIA GONZALEZ\source\repos\Proyecto22\Proyecto22\obj\Debug\Proyecto22.csproj.CoreCompileInputs.cache
 C:\Users\ANNIA GONZALEZ\source\repos\Proyecto22\Proyecto22\obj\Debug\Proyecto22.exe
 C:\Users\ANNIA GONZALEZ\source\repos\Proyecto22\Proyecto22\obj\Debug\Proyecto22.pdb
+C:\Users\ANNIA GONZALEZ\source\repos\Proyecto22\Proyecto22\obj\Debug\Proyecto22.csprojAssemblyReference.cache

@@ -26,6 +26,8 @@ namespace Proyecto22
             InitializeComponent();
         }
 
+        List<String> historial = new List<String>();
+
         private void Window_Loaded(Object sender, RoutedEventArgs e)
         {
             try
@@ -51,7 +53,7 @@ namespace Proyecto22
         }
 
 
-        private void Button_Click_4(object sender, RoutedEventArgs e)
+        private void Button_Click_4(object sender, RoutedEventArgs e)//back
         {
             try
             {
@@ -63,7 +65,7 @@ namespace Proyecto22
             }
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void Button_Click_3(object sender, RoutedEventArgs e)//forward
         {
             try
             {
@@ -75,11 +77,12 @@ namespace Proyecto22
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)//go
         {
             try
             {
                 myweb.Source = new Uri("http://" + search.Text);
+                historial.Add("http://" + search.Text);
             }
             catch (Exception ex)
             {
@@ -92,6 +95,21 @@ namespace Proyecto22
 
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            String variable = "";
+            for(int i = 0; i < historial.Count; i++)
+            {
+                variable += historial[i] + " ";
+            }
+            MessageBox.Show(variable, "Historial", MessageBoxButton.OK, MessageBoxImage.Information);
+            variable = "";
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            historial.Clear();
+        }
 
         /*ObservableCollection<ItemVM> _items;
         public ObservableCollection<ItemVM> Items
