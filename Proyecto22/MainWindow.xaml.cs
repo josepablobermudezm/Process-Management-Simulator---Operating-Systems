@@ -19,11 +19,42 @@ namespace Proyecto22
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
+    /// 
     public partial class MainWindow : Window
     {
+        private List<TabItem> _tabItems;
         public MainWindow()
         {
             InitializeComponent();
+
+            /*try
+            {
+                InitializeComponent();
+
+                // initialize tabItem array
+                _tabItems = new List<TabItem>();
+
+                // add a tabItem with + in header 
+                for(int i = 0; i < 5; i++)
+                {
+                    TabItem tabAdd = new TabItem();
+                    tabAdd.Header = "+";
+                    _tabItems.Add(tabAdd);
+                }
+                
+                // add first tab
+                //this.AddTabItem();
+
+                // bind tab control
+                tabControl.DataContext = _tabItems;
+                tabControl.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }*/
+
+
         }
 
         List<String> historial = new List<String>();
@@ -81,8 +112,14 @@ namespace Proyecto22
         {
             try
             {
-                myweb.Source = new Uri("http://" + search.Text);
                 historial.Add("http://" + search.Text);
+                //tabControl.SelectedIndex
+                TabItem tab = (TabItem)tabControl.SelectedItem;
+                WebBrowser web = new WebBrowser();
+                web.Source = new Uri("http://" + search.Text);
+                web.Height = 394;
+                web.Width = 974;
+                tab.Content = web;
             }
             catch (Exception ex)
             {
@@ -109,6 +146,24 @@ namespace Proyecto22
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
             historial.Clear();
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)//Agregar Ventana
+        {
+            int idx = tabControl.Items.Count;
+            tabControl.SelectedIndex = idx - 1;
+            TabItem ti = new TabItem();
+            ti.Name = "new";
+            ti.Header = "new";
+            WebBrowser web = new WebBrowser();
+            web.Source = new Uri("http://www.Google.com");
+            web.Height = 394;
+            web.Width = 974;
+            ti.Content = web;
+
+            tabControl.Items.Insert(tabControl.Items.Count - 1, ti);
+
+            tabControl.SelectedIndex = tabControl.Items.Count - 2;
         }
 
         /*ObservableCollection<ItemVM> _items;
