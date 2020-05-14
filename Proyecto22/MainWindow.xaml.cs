@@ -53,8 +53,6 @@ namespace Proyecto22
             {
                 MessageBox.Show(ex.Message);
             }*/
-
-
         }
 
         List<String> historial = new List<String>();
@@ -132,24 +130,64 @@ namespace Proyecto22
 
         }
 
+        public TabItem ti = new TabItem();
+        public ListView list = new ListView();
+
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            String variable = "";
+            /*String variable = "";
             for(int i = 0; i < historial.Count; i++)
             {
                 variable += historial[i] + " ";
+            }*/
+            //MessageBox.Show(variable, "Historial", MessageBoxButton.OK, MessageBoxImage.Information);
+            //variable = "";
+            
+            list.Height = 394;
+            list.Width = 974;
+
+            if (ti.Content == null)
+            {
+                int idx = tabControl.Items.Count;
+                tabControl.SelectedIndex = idx - 1;
+
+                ti.Name = "Historial";
+                ti.Header = "Historial";
+
+                for (int i = 0; i < historial.Count; i++)
+                {
+                    list.Items.Add(historial[i]);
+                }
+
+                ti.Content = list;
+
+                tabControl.Items.Insert(tabControl.Items.Count - 1, ti);
+                tabControl.SelectedIndex = tabControl.Items.Count - 2;
             }
-            MessageBox.Show(variable, "Historial", MessageBoxButton.OK, MessageBoxImage.Information);
-            variable = "";
+            else
+            {
+                for (int i = 0; i < historial.Count; i++)
+                {
+                    list.Items.Add(historial[i]);
+                }
+
+                ti.Content = list;
+            }
+            
+
+            
         }
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
             historial.Clear();
+            list.Items.Clear();
+            ti.Content = list;
         }
 
         private void Button_Click_6(object sender, RoutedEventArgs e)//Agregar Ventana
         {
+            //obtenemos la cantidad de items que tiene el tabControl, luego creamos un nuevo TabItem, le agregamos la página web 
             int idx = tabControl.Items.Count;
             tabControl.SelectedIndex = idx - 1;
             TabItem ti = new TabItem();
@@ -164,6 +202,11 @@ namespace Proyecto22
             tabControl.Items.Insert(tabControl.Items.Count - 1, ti);
 
             tabControl.SelectedIndex = tabControl.Items.Count - 2;
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)//eliminar  una  ventana
+        {
+            tabControl.Items.Remove(tabControl.SelectedItem);
         }
 
         /*ObservableCollection<ItemVM> _items;
